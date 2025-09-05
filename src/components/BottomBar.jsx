@@ -6,16 +6,18 @@ import {
   CalendarHeart,
   MapPin,
   Gift,
+  Image,
   MessageCircleHeart
 } from 'lucide-react';
 import { cn } from "@/lib/utils";
 
 const menuItems = [
-  { icon: Home, label: 'Beranda', href: '#home', id: 'home' },
-  { icon: CalendarHeart, label: 'Event', href: '#event', id: 'event' },
-  { icon: MapPin, label: 'Lokasi', href: '#location', id: 'location' },
-  { icon: Gift, label: 'Hadiah', href: '#gifts', id: 'gifts' },
-  { icon: MessageCircleHeart, label: 'Harapan', href: '#wishes', id: 'wishes' },
+  { icon: Home, label: 'Thiệp mời', href: '#home', id: 'home' },
+  { icon: CalendarHeart, label: 'Sự kiện', href: '#event', id: 'event' },
+  { icon: MapPin, label: 'Địa điểm', href: '#location', id: 'location' },
+  { icon: Gift, label: 'Quà tặng', href: '#gifts', id: 'gifts' },
+  { icon: Image, label: 'Ảnh cưới', href: '#image', id: 'image' },
+  { icon: MessageCircleHeart, label: 'Lời chúc', href: '#wishes', id: 'wishes' },
 ];
 
 /**
