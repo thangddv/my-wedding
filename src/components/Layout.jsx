@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
         setIsPlaying(true);
         wasPlayingRef.current = true;
         setShowToast(true);
-        setTimeout(() => setShowToast(false), 3000);
+        setTimeout(() => setShowToast(false), 500);
       } catch (error) {
         console.log('Autoplay failed, waiting for user interaction');
         // Add click event listener for first interaction
@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
             setIsPlaying(true);
             wasPlayingRef.current = true;
             setShowToast(true);
-            setTimeout(() => setShowToast(false), 3000);
+            setTimeout(() => setShowToast(false), 500);
             document.removeEventListener('click', handleFirstInteraction);
           } catch (err) {
             console.error('Playback failed after interaction:', err);
