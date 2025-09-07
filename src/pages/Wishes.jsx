@@ -13,8 +13,10 @@ import {
     XCircle,
     HelpCircle,
 } from 'lucide-react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { formatEventDate } from '@/lib/formatEventDate';
+
+const API_URL = 'https://script.google.com/macros/s/AKfycbx3GP6TIo5plNswZybfWm25YwQtx6G7D3k5Qp8kLpxShdJVzXUNVg7Em9YA7c1rwOsT/exec'; // <-- Replace with your Apps Script Web App URL
 
 export default function Wishes() {
     const [showConfetti, setShowConfetti] = useState(false);
@@ -22,58 +24,55 @@ export default function Wishes() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [attendance, setAttendance] = useState('');
     const [isOpen, setIsOpen] = useState(false);
+    const [name, setName] = useState('');
+    const [wishes, setWishes] = useState([]);
 
     const options = [
-        { value: 'ATTENDING', label: 'Ya, saya akan hadir' },
-        { value: 'NOT_ATTENDING', label: 'Tidak, saya tidak bisa hadir' },
-        { value: 'MAYBE', label: 'Mungkin, saya akan konfirmasi nanti' }
+        { value: 'ATTENDING', label: 'Sẽ tham dự' },
+        { value: 'NOT_ATTENDING', label: 'Không thể tham dự' },
+        { value: 'MAYBE', label: 'Có thể sẽ tham dự' }
     ];
-    // Example wishes - replace with your actual data
-    const [wishes, setWishes] = useState([
-        {
-            id: 1,
-            name: "John Doe",
-            message: "Wishing you both a lifetime of love, laughter, and happiness! 🎉",
-            timestamp: "2024-12-24T23:20:00Z",
-            attending: "attending"
-        },
-        {
-            id: 2,
-            name: "Natalie",
-            message: "Wishing you both a lifetime of love, laughter, and happiness! 🎉",
-            timestamp: "2024-12-24T23:20:00Z",
-            attending: "attending"
-        },
-        {
-            id: 3,
-            name: "Abdur Rofi",
-            message: "Congratulations on your special day! May Allah bless your union! 🤲",
-            timestamp: "2024-12-25T23:08:09Z",
-            attending: "maybe"
-        }
-    ]);
+
+    // Fetch wishes from Google Sheets on mount
+    useEffect(() => {
+        fetch(API_URL)
+            .then(res => res.json())
+            .then(data => setWishes(data.reverse())) // newest first
+            .catch(console.error);
+    }, []);
 
     const handleSubmitWish = async (e) => {
         e.preventDefault();
-        if (!newWish.trim()) return;
-
+        if (!newWish.trim() || !name.trim() || !attendance) return;
         setIsSubmitting(true);
-        // Simulating API call
-        await new Promise(resolve => setTimeout(resolve, 1000));
-
-        const newWishObj = {
-            id: wishes.length + 1,
-            name: "Guest", // Replace with actual user name
+        const wishData = {
+            name,
             message: newWish,
-            attend: "attending",
-            timestamp: new Date().toISOString()
+            attendance,
         };
-
-        setWishes(prev => [newWishObj, ...prev]);
-        setNewWish('');
-        setIsSubmitting(false);
-        setShowConfetti(true);
-        setTimeout(() => setShowConfetti(false), 3000);
+        try {
+            await fetch(API_URL, {
+                method: 'POST',
+                redirect: "follow",
+                headers: { 
+                    "Content-Type": "text/plain;charset=utf-8"
+                },
+                body: JSON.stringify(wishData)
+            });
+            // Refetch wishes after submit
+            const res = await fetch(API_URL);
+            const data = await res.json();
+            setWishes(data.reverse());
+            setNewWish('');
+            setName('');
+            setAttendance('');
+            setIsSubmitting(false);
+            setShowConfetti(true);
+            setTimeout(() => setShowConfetti(false), 3000);
+        } catch (err) {
+            setIsSubmitting(false);
+            alert('Có lỗi xảy ra khi gửi lời chúc!');
+        }
     };
     const getAttendanceIcon = (status) => {
         switch (status) {
@@ -212,6 +211,9 @@ export default function Wishes() {
                                     </div>
                                     <input
                                         type="text"
+                                        name="name"
+                                        value={name}
+                                        onChange={e => setName(e.target.value)}
                                         placeholder="Nhập tên của bạn..."
                                         className="w-full px-4 py-2.5 rounded-xl bg-white/50 border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-all duration-200 text-gray-700 placeholder-gray-400"
                                         required
@@ -227,8 +229,6 @@ export default function Wishes() {
                                         <Calendar className="w-4 h-4" />
                                         <span>Bạn sẽ tham dự chứ?</span>
                                     </div>
-
-                                    {/* Custom Select Button */}
                                     <button
                                         type="button"
                                         onClick={() => setIsOpen(!isOpen)}
@@ -240,12 +240,9 @@ export default function Wishes() {
                                                 : 'Chọn trạng thái tham dự...'}
                                         </span>
                                         <ChevronDown
-                                            className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''
-                                                }`}
+                                            className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`}
                                         />
                                     </button>
-
-                                    {/* Dropdown Options */}
                                     <AnimatePresence>
                                         {isOpen && (
                                             <motion.div
@@ -285,6 +282,8 @@ export default function Wishes() {
                                     <textarea
                                         placeholder="Gửi lời chúc và lời nhắn tới cô dâu chú rể..."
                                         className="w-full h-32 p-4 rounded-xl bg-white/50 border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 resize-none transition-all duration-200"
+                                        value={newWish}
+                                        onChange={e => setNewWish(e.target.value)}
                                         required
                                     />
                                 </div>

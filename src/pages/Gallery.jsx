@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 
 // Add your image filenames here
 const images = [
-  "/images/308f8b0625d2ae8cf7c311.jpg",
-  "/images/04402cc9821d0943500c10.jpg",
-  "/images/aaf00679a8ad23f37abc14.jpg"
+  "./images/308f8b0625d2ae8cf7c311.jpg",
+  "./images/04402cc9821d0943500c10.jpg",
+  "./images/aaf00679a8ad23f37abc14.jpg"
   // Add more image paths as needed
 ];
 
