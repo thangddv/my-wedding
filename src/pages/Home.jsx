@@ -106,7 +106,7 @@ export default function Hero() {
 
     return (
         <>
-            <section id="home" className="min-h-screen flex flex-col items-center justify-center px-4 py-10 sm:py-10 text-center relative overflow-hidden">
+            <section id="home" className="min-h-screen flex flex-col items-center justify-center px-4 py-5 sm:py-5 text-center relative overflow-hidden">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -119,7 +119,7 @@ export default function Hero() {
                         transition={{ delay: 0.2 }}
                         className="inline-block mx-auto"
                     >
-                        <span className="px-4 py-1 text-sm bg-rose-50 text-rose-600 rounded-full border border-rose-200">
+                        <span className="font-serif px-4 py-1 text-sm bg-rose-50 text-rose-600 rounded-full border border-rose-200">
                             Save the date
                         </span>
                     </motion.div>
@@ -129,7 +129,7 @@ export default function Hero() {
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.4 }}
-                            className="text-gray-500 font-light italic text-base sm:text-lg"
+                            className="text-gray-500 italic font-light text-base sm:text-lg"
                         >
                             Lễ thành hôn của chúng tôi
                         </motion.p>
@@ -201,7 +201,7 @@ export default function Hero() {
                                     {/* <p className="text-gray-600 font-medium text-sm">
                                         Anh/Chị/Bạn/Em
                                     </p> */}
-                                    <p className="text-rose-500 font-semibold text-lg">
+                                    <p className="text-rose-500 font-serif italic text-lg">
                                         {guestName ? guestName : ""}
                                     </p>
                                 </motion.div>

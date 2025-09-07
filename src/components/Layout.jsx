@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
         setIsPlaying(true);
         wasPlayingRef.current = true;
         setShowToast(true);
-        setTimeout(() => setShowToast(false), 500);
+        setTimeout(() => setShowToast(false), config.data.audio.toastDuration);
       } catch (error) {
         console.log('Autoplay failed, waiting for user interaction');
         // Add click event listener for first interaction
@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
             setIsPlaying(true);
             wasPlayingRef.current = true;
             setShowToast(true);
-            setTimeout(() => setShowToast(false), 500);
+            setTimeout(() => setShowToast(false), config.data.audio.toastDuration);
             document.removeEventListener('click', handleFirstInteraction);
           } catch (err) {
             console.error('Playback failed after interaction:', err);
@@ -43,7 +43,7 @@ const Layout = ({ children }) => {
       }
     };
 
-    attemptAutoplay();
+    {config.data.audio.autoplay && attemptAutoplay()}
 
     return () => {
       if (audioRef.current) {
@@ -89,7 +89,7 @@ const Layout = ({ children }) => {
     const handlePlay = () => {
       setIsPlaying(true);
       setShowToast(true);
-      setTimeout(() => setShowToast(false), config.audio.toastDuration);
+      setTimeout(() => setShowToast(false), config.data.audio.toastDuration);
     };
 
     const handlePause = () => {

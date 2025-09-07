@@ -27,7 +27,7 @@ export const formatEventDate = (isoString, format = 'full') => {
         },
         short: {
             day: 'numeric',
-            month: 'long',
+            month: 'numeric',
             year: 'numeric',
             timeZone: 'Asia/Ho_Chi_Minh'
         },
@@ -66,11 +66,11 @@ export const formatEventDate = (isoString, format = 'full') => {
         'Saturday': 'Thứ Bảy'
     };
 
-    let formatted = date.toLocaleDateString('en-US', formats[format]);
+    let formatted = date.toLocaleDateString('vi-VN', formats[format]);
 
     // Handle time format separately
     if (format === 'time') {
-        return date.toLocaleTimeString('en-US', formats[format]);
+        return date.toLocaleTimeString('vi-VN', formats[format]);
     }
 
     // Replace English month and day names with Indonesian ones

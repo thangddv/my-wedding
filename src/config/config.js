@@ -14,7 +14,7 @@ const config = {
     // Bride's parents names
     parentBride: "Trần Văn Tài & Đỗ Thu Hường",
     // Wedding date (format: YYYY-MM-DD)
-    date: "2025-10-26",
+    date: "2025-11-01",
     // Google Maps embed code to display map on website
     // How to get: open Google Maps → select location → Share → Embed → copy link
     maps_embed:
@@ -26,18 +26,20 @@ const config = {
     // Full address of the wedding venue
     address: "Hoàng Xá 1, P.Ái Quốc, TP.Hải Phòng",
     // Image that appears when link is shared on social media
-    ogImage: "/images/og-image.jpg",
+    ogImage: "./images/og-image.jpg",
     // Icon that appears in browser tab
-    favicon: "/images/favicon.ico",
+    favicon: "./favicon.png",
+    // Google Apps Script Web App key for handling wishes submission
+    appScriptKey: "AKfycbx3GP6TIo5plNswZybfWm25YwQtx6G7D3k5Qp8kLpxShdJVzXUNVg7Em9YA7c1rwOsT",
     // List of event agenda/schedule
     agenda: [
       {
         // First event name
         title: "Lễ cưới nhà Trai",
-        date: "2025-11-22",
+        date: "2025-11-23",
         startTime: "10:00",
-        endTime: "17:30",
-        location: "P.Ai Quốc, TP.Hải Phòng",
+        endTime: "12:30",
+        location: "Hoàng Xá 1, P.Ái Quốc, TP.Hải Phòng",
         address: "Nhà văn hóa Thiếu Nhi Hải Phòng",
         // Google Maps link for location (short clickable link)
         maps_url: "https://maps.app.goo.gl/2H1jpf9CxzMMdo1K7",
@@ -49,7 +51,7 @@ const config = {
         // Start time (format: HH:MM)
         startTime: "10:00",
         // End time (format: HH:MM)
-        endTime: "17:30",
+        endTime: "12:30",
         // Event venue
         location: "Thịnh Lang, TP.Hòa Bình",
         // Full address
@@ -61,13 +63,15 @@ const config = {
     // Background music settings
     audio: {
       // Music file (choose one or replace with your own file)
-      src: "/audio/fulfilling-humming.mp3", // or /audio/nature-sound.mp3
+      src: "./audio/fulfilling-humming.mp3", // or /audio/nature-sound.mp3
       // Music title to display
       title: "Fulfilling Humming", // or Nature Sound
       // Whether music plays automatically when website opens
       autoplay: false,
       // Whether music repeats continuously
-      loop: true
+      loop: true,
+      // Duration for which the toast message is displayed
+      toastDuration: 1000
     },
 
     // List of bank accounts for digital envelope/gifts

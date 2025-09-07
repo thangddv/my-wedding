@@ -15,8 +15,9 @@ import {
 } from 'lucide-react'
 import { useState, useEffect } from 'react';
 import { formatEventDate } from '@/lib/formatEventDate';
+import config from '@/config/config';
 
-const API_URL = 'https://script.google.com/macros/s/AKfycbx3GP6TIo5plNswZybfWm25YwQtx6G7D3k5Qp8kLpxShdJVzXUNVg7Em9YA7c1rwOsT/exec'; // <-- Replace with your Apps Script Web App URL
+const API_URL = `https://script.google.com/macros/s/${config.data.appScriptKey}/exec`;
 
 export default function Wishes() {
     const [showConfetti, setShowConfetti] = useState(false);
@@ -37,7 +38,7 @@ export default function Wishes() {
     useEffect(() => {
         fetch(API_URL)
             .then(res => res.json())
-            .then(data => setWishes(data.reverse())) // newest first
+            .then(data => setWishes(data.reverse()))
             .catch(console.error);
     }, []);
 
@@ -95,7 +96,7 @@ export default function Wishes() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="text-center space-y-4 mb-16"
+                    className="text-center space-y-4 mb-8"
                 >
                     <motion.span
                         initial={{ opacity: 0, y: 10 }}
@@ -112,7 +113,7 @@ export default function Wishes() {
                         transition={{ delay: 0.3 }}
                         className="text-4xl md:text-5xl font-serif text-gray-800"
                     >
-                        Lời chúc & lời nhắn
+                        Lời chúc
                     </motion.h2>
 
                     {/* Decorative Divider */}
@@ -131,12 +132,12 @@ export default function Wishes() {
                 {/* Wishes List */}
                 <div className="max-w-2xl mx-auto space-y-6">
                     <AnimatePresence>
-                        <Marquee speed={20}
-                            gradient={false}
+                        <Marquee 
+                            speed={20}
                             className="[--duration:20s] py-2">
                             {wishes.map((wish, index) => (
                                 <motion.div
-                                    key={wish.id}
+                                    key={index}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -20 }}
