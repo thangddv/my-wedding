@@ -1,4 +1,4 @@
-import Hero from '@/pages/Hero'
+import Hero from '@/pages/Home'
 import Events from '@/pages/Events'
 import Location from '@/pages/Location';
 import Wishes from '@/pages/Wishes';
