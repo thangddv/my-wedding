@@ -9,7 +9,8 @@ import {
   X,
   Chrome,
   Apple,
-  Calendar as CalendarIcon
+  Calendar as CalendarIcon,
+  ExternalLink
 } from 'lucide-react';
 import { formatEventDate } from '@/lib/formatEventDate';
 
@@ -160,6 +161,21 @@ END:VCALENDAR`;
           <div className="flex items-center space-x-3">
             <MapPin className="w-5 h-5 text-rose-500" />
             <span>{eventData.location}</span>
+          </div>
+          {/* Action Button - Full Width */}
+          <div className="pt-4">
+              <motion.a
+                  href={eventData.maps_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  viewport={{ once: true }}
+                  className="w-full flex items-center justify-center gap-1.5 bg-white text-gray-600 px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors text-sm"
+              >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span className="font-semibold">View Map</span>
+              </motion.a>
           </div>
         </div>
       </motion.div>

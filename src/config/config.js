@@ -1,7 +1,7 @@
 const config = {
   data: {
     // Main invitation title that appears on the page
-    title: "Pernikahan Fulan & Fulana",
+    title: "Việt Thắng & Hải Yến",
     // Opening message/description of the invitation
     description:
       "Kami akan menikah dan mengundang Anda untuk turut merayakan momen istimewa ini.", // Nanti ini dibikin random
@@ -15,8 +15,6 @@ const config = {
     parentBride: "Trần Văn Tài & Đỗ Thu Hường",
     // Wedding date (format: YYYY-MM-DD)
     date: "2025-10-26",
-    // Google Maps link for location (short clickable link)
-    maps_url: "https://maps.app.goo.gl/Zi1v7qCZ1QRCk7uv5",
     // Google Maps embed code to display map on website
     // How to get: open Google Maps → select location → Share → Embed → copy link
     maps_embed:
@@ -24,7 +22,7 @@ const config = {
     // Event time (free format, example: "10:00 - 12:00 WIB")
     time: "10:00 - 11:00",
     // Venue/building name
-    location: "Grand Ballroom, Hotel Majesty",
+    location: "Nhà văn hóa Thiếu Nhi Hải Phòng",
     // Full address of the wedding venue
     address: "Hoàng Xá 1, P.Ái Quốc, TP.Hải Phòng",
     // Image that appears when link is shared on social media
@@ -35,26 +33,27 @@ const config = {
     agenda: [
       {
         // First event name
-        title: "Akad Nikah",
+        title: "Lễ cưới nhà Trai",
+        date: "2025-11-22",
+        startTime: "10:00",
+        endTime: "17:30",
+        location: "P.Ai Quốc, TP.Hải Phòng",
+        address: "Nhà văn hóa Thiếu Nhi Hải Phòng",
+        // Google Maps link for location (short clickable link)
+        maps_url: "https://maps.app.goo.gl/2H1jpf9CxzMMdo1K7",
+      },
+      {
+        title: "Lễ cưới nhà Gái",
         // Event date (format: YYYY-MM-DD)
-        date: "2024-12-24",
+        date: "2025-10-26",
         // Start time (format: HH:MM)
-        startTime: "16:16",
+        startTime: "10:00",
         // End time (format: HH:MM)
         endTime: "17:30",
         // Event venue
-        location: "Grand Ballroom, Hotel Majesty",
+        location: "Thịnh Lang, TP.Hòa Bình",
         // Full address
-        address: "Jl. Jend. Sudirman No.1, Jakarta",
-      },
-      {
-        // Second event name
-        title: "Resepsi Nikah",
-        date: "2024-12-24",
-        startTime: "16:16",
-        endTime: "17:30",
-        location: "Grand Ballroom, Hotel Majesty",
-        address: "Jl. Jend. Sudirman No.1, Jakarta",
+        address: "Khách Sạn Mường Thanh Luxury Hòa Bình",
       }
       // You can add more agenda items with the same format
     ],

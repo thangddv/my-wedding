@@ -13,7 +13,7 @@ export default function Events() {
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="relative z-10 container mx-auto px-4 py-20"
+                    className="relative z-10 container mx-auto px-4 py-10"
                 >
                     {/* Section Header */}
                     <motion.div
@@ -30,7 +30,7 @@ export default function Events() {
                             transition={{ delay: 0.2 }}
                             className="inline-block text-rose-500 font-medium mb-2"
                         >
-                            Catat Tanggal Penting Ini
+                            Save The Date
                         </motion.span>
 
                         <motion.h2
@@ -40,7 +40,7 @@ export default function Events() {
                             transition={{ delay: 0.3 }}
                             className="text-4xl md:text-5xl font-serif text-gray-800 leading-tight"
                         >
-                            Rangkaian Acara Pernikahan
+                            Lễ Thành Hôn
                         </motion.h2>
 
                         <motion.p
@@ -50,7 +50,7 @@ export default function Events() {
                             transition={{ delay: 0.4 }}
                             className="text-gray-500 max-w-md mx-auto"
                         >
-                            Kami Mengundang Anda untuk Merayakan Hari Istimewa Sebagai Awal Perjalanan Cinta Kami
+                            Tình yêu đích thực đứng về phía nhau trong những ngày tốt đẹp và sát cánh hơn trong những ngày tồi tệ.
                         </motion.p>
 
                         {/* Decorative Line */}

@@ -11,10 +11,10 @@ export default function MainContent() {
         <>
             <Hero />
             <Events />
-            <Location />
-            <Gifts />
+            {/* <Location /> */}
             <Gallery />
             <Wishes />
+            <Gifts />
         </>
     )
 }

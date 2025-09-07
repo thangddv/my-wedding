@@ -26,7 +26,7 @@ export default function Gifts() {
     
     return (<>
         <section id="gifts" className="min-h-screen relative overflow-hidden">
-            <div className="container mx-auto px-4 py-20 relative z-10">
+            <div className="container mx-auto px-4 py-10 relative z-10">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -34,22 +34,13 @@ export default function Gifts() {
                     transition={{ duration: 0.8 }}
                     className="text-center space-y-4 mb-16"
                 >
-                    <motion.span
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={hasAnimated ? { opacity: 1, y: 0 } : {}}
-                        transition={{ delay: 0.2 }}
-                        className="inline-block text-rose-500 font-medium"
-                    >
-                        Hadiah Pernikahan
-                    </motion.span>
-
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         animate={hasAnimated ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.3 }}
                         className="text-4xl md:text-5xl font-serif text-gray-800"
                     >
-                        Berikan Hadiah
+                        Gửi quà mừng
                     </motion.h2>
 
                     {/* Decorative Divider */}
@@ -71,25 +62,10 @@ export default function Gifts() {
                         transition={{ delay: 0.5 }}
                         className="space-y-4 max-w-md mx-auto"
                     >
-                        {/* Arabic InsyaAllah */}
+                        {/* Vietnamese Wedding Wish */}
                         <p className="font-arabic text-xl text-gray-800">
-                            إن شاء الله
+                            Cảm ơn tấm lòng của bạn
                         </p>
-
-                        {/* Main Message */}
-                        <p className="text-gray-600 leading-relaxed">
-                            Insya Allah, Kami Akan Menyalurkan Semua Hadiah yang Diberikan ke Beberapa Masjid dan Lembaga yang Membutuhkan
-                        </p>
-
-                        {/* Arabic Dua */}
-                        <div className="space-y-2">
-                            <p className="font-arabic text-lg text-gray-800">
-                                جزاكم الله خيرا وبارك الله فيكم
-                            </p>
-                            <p className="text-gray-600 italic text-sm">
-                                Jazakumullahu khairan, Barakallah fiikum
-                            </p>
-                        </div>
                     </motion.div>
 
                     {/* Optional: Additional Decorative Element */}
@@ -106,7 +82,7 @@ export default function Gifts() {
                 </motion.div>
 
                 {/* Bank Accounts Grid */}
-                <div className="max-w-2xl mx-auto grid gap-6">
+                <div className="max-w-2xl mx-auto grid gap-2">
                     {config.data.banks.map((account, index) => (
                         <motion.div
                             key={account.accountNumber}
@@ -145,7 +121,7 @@ export default function Gifts() {
                                                 <Copy className="w-4 h-4" />
                                             )}
                                             <span className="text-sm">
-                                                {copiedAccount === account.bank ? 'Copied!' : 'Copy'}
+                                                {copiedAccount === account.bank ? 'Đã sao chép!' : 'Sao chép'}
                                             </span>
                                         </motion.button>
                                     </div>

@@ -7,7 +7,7 @@ export default function Location() {
     return (<>
         {/* Location section */}
         <section id="location" className="min-h-screen relative overflow-hidden">
-            <div className="container mx-auto px-4 py-20 relative z-10">
+            <div className="container mx-auto px-4 py-10 relative z-10">
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -23,7 +23,7 @@ export default function Location() {
                         viewport={{ once: true }}
                         className="inline-block text-rose-500 font-medium"
                     >
-                        Lokasi Acara
+                        Tổ chức tại
                     </motion.span>
 
                     <motion.h2
@@ -33,7 +33,7 @@ export default function Location() {
                         viewport={{ once: true }}
                         className="text-4xl md:text-5xl font-serif text-gray-800"
                     >
-                        Lokasi
+                        Địa điểm
                     </motion.h2>
 
                     {/* Decorative Divider */}

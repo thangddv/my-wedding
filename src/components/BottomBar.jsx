@@ -14,10 +14,9 @@ import { cn } from "@/lib/utils";
 const menuItems = [
   { icon: Home, label: 'Thiệp', href: '#home', id: 'home' },
   { icon: CalendarHeart, label: 'Sự kiện', href: '#event', id: 'event' },
-  { icon: MapPin, label: 'Địa điểm', href: '#location', id: 'location' },
-  { icon: Gift, label: 'Quà tặng', href: '#gifts', id: 'gifts' },
-  { icon: Image, label: 'Ảnh cưới', href: '#image', id: 'image' },
+  { icon: Image, label: 'Album', href: '#image', id: 'image' },
   { icon: MessageCircleHeart, label: 'Lời chúc', href: '#wishes', id: 'wishes' },
+  { icon: Gift, label: 'Hộp mừng', href: '#gifts', id: 'gifts' },
 ];
 
 /**
