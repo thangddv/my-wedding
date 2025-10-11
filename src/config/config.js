@@ -6,9 +6,9 @@ const config = {
     description:
       "Kami akan menikah dan mengundang Anda untuk turut merayakan momen istimewa ini.", // Nanti ini dibikin random
     // Groom's name
-    groomName: "Thắng",
+    groomName: "Việt Thắng",
     // Bride's name
-    brideName: "Yến",
+    brideName: "Hải Yến",
     // Groom's parents names
     parentGroom: "Đồng Văn Viết & Nguyễn Thị Nhàn",
     // Bride's parents names
@@ -20,7 +20,7 @@ const config = {
     maps_embed:
       "https://www.google.com/maps/embed?pb=!1m13!1m11!1m3!1d706.9384991270489!2d106.382803898823!3d20.93038811510843!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2s!4v1757056374084!5m2!1sen!2s",
     // Event time (free format, example: "10:00 - 12:00 WIB")
-    time: "10:00 - 11:00",
+    time: "11:00 - 13:00",
     // Venue/building name
     location: "Nhà văn hóa Thiếu Nhi Hải Phòng",
     // Full address of the wedding venue

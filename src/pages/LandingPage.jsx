@@ -9,7 +9,7 @@ const LandingPage = ({ onOpenInvitation }) => (
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
-    className="relative overflow-hidden"
+    className="min-h-screen relative overflow-hidden"
   >
     {/* Decorative Background */}
     <div className="absolute inset-0 bg-gradient-to-b from-white via-rose-50/30 to-white" />
@@ -33,26 +33,18 @@ const LandingPage = ({ onOpenInvitation }) => (
             <div className="h-px w-12 sm:w-16 bg-rose-200/50" />
           </div>
 
-          {/* Date and Time */}
+          {/* Song Hy Image */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
             className="flex flex-col gap-4 mb-6 sm:mb-8 items-center"
           >
-            <div className="inline-flex flex-col items-center space-y-1 bg-white/80 px-4 sm:px-6 py-2 sm:py-3 rounded-xl">
-              <Calendar className="w-5 h-5 text-rose-400" />
-              <p className="text-gray-700 font-medium">
-                {formatEventDate(config.data.date)}
-              </p>
-            </div>
-
-            {/* <div className="inline-flex flex-col items-center space-y-1 bg-white/80 px-4 sm:px-6 py-2 sm:py-3 rounded-xl">
-              <Clock className="w-5 h-5 text-rose-400" />
-              <p className="text-gray-700 font-medium">
-                {config.data.time}
-              </p>
-            </div> */}
+            <img
+              src="images/TMT07165.JPG"
+              alt="Song Hy"
+              className="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-full shadow-lg border-4 border-rose-100 bg-white"
+            />
           </motion.div>
 
           {/* Couple Names */}
@@ -63,7 +55,7 @@ const LandingPage = ({ onOpenInvitation }) => (
             className="text-center space-y-4"
           >
             <div className="space-y-2">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-gray-800 leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-serif text-gray-800 leading-tight">
                 {config.data.groomName}
                 <span className="text-rose-400 mx-2 sm:mx-3">&</span>
                 {config.data.brideName}

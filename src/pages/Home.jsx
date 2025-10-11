@@ -106,12 +106,12 @@ export default function Hero() {
 
     return (
         <>
-            <section id="home" className="min-h-screen flex flex-col items-center justify-center px-4 py-5 sm:py-5 text-center relative overflow-hidden">
+            <section id="home" className="flex flex-col items-center justify-center px-4 py-5 sm:py-5 text-center relative overflow-hidden">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="space-y-6 relative z-10"
+                    className="relative z-10 container mx-auto px-4 py-10"
                 >
                     <motion.div
                         initial={{ scale: 0 }}
@@ -124,15 +124,41 @@ export default function Hero() {
                         </span>
                     </motion.div>
 
-                    <div className="space-y-4">
+                    <div className="space-y-4 pt-6">
                         <motion.p
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.4 }}
                             className="text-gray-500 italic font-light text-base sm:text-lg"
                         >
-                            Lễ thành hôn của chúng tôi
+                            Lễ thành hôn của (con) chúng tôi
                         </motion.p>
+
+                        {/* Parents Info Row */}
+                        <motion.div className="flex flex-row justify-between text-gray-600 italic font-medium text-sm sm:text-base">
+                            <motion.p
+                                initial={{ opacity: 0, x: -30 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.3 }}
+                                className="flex-1 text-center"
+                            >   
+                                Nhà Trai <br/>
+                                Ông: <span className="">{config.data.parentGroom.split('&')[0]?.trim()}</span><br/>
+                                Bà: <span className="">{config.data.parentGroom.split('&')[1]?.trim()}</span>
+                            </motion.p>
+
+                            <motion.p
+                                initial={{ opacity: 0, x: -30 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.3 }}
+                                className="flex-1 text-center"
+                            >   
+                                Nhà Gái <br/>
+                                Ông: <span className="">{config.data.parentBride.split('&')[0]?.trim()}</span><br/>
+                                Bà: <span className="">{config.data.parentBride.split('&')[1]?.trim()}</span>
+                            </motion.p>
+                        </motion.div>
+
                         <motion.h2
                             initial={{ scale: 0.8, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
@@ -147,7 +173,7 @@ export default function Hero() {
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.8 }}
-                        className="relative max-w-md mx-auto"
+                        className="relative mt-6 sm:mt-8 max-w-md mx-auto"
                     >
                         <div className="absolute inset-0 bg-gradient-to-b from-rose-50/50 to-white/50 backdrop-blur-md rounded-2xl" />
 
