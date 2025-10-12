@@ -41,7 +41,7 @@ const LandingPage = ({ onOpenInvitation }) => (
             className="flex flex-col gap-4 mb-6 sm:mb-8 items-center"
           >
             <img
-              src="images/TMT07165.JPG"
+              src="images/TMT07165.jpg"
               alt="Song Hy"
               className="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-full shadow-lg border-4 border-rose-100 bg-white"
             />

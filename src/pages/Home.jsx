@@ -67,8 +67,8 @@ export default function Hero() {
 
     const FloatingHearts = () => {
         return (
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                {[...Array(8)].map((_, i) => (
+            <div className="absolute inset-0 pointer-events-none">
+                {[...Array(20)].map((_, i) => (
                     <motion.div
                         key={i}
                         initial={{
@@ -79,12 +79,12 @@ export default function Hero() {
                         }}
                         animate={{
                             opacity: [0, 1, 1, 0],
-                            scale: [0, 1, 1, 0.5],
+                            scale: [0, 1, 1, 1.5],
                             x: Math.random() * window.innerWidth,
                             y: -100
                         }}
                         transition={{
-                            duration: 4,
+                            duration: 10,
                             repeat: Infinity,
                             delay: i * 0.8,
                             ease: "easeOut"
@@ -119,7 +119,7 @@ export default function Hero() {
                         transition={{ delay: 0.2 }}
                         className="inline-block mx-auto"
                     >
-                        <span className="font-serif px-4 py-1 text-sm bg-rose-50 text-rose-600 rounded-full border border-rose-200">
+                        <span className="font-serif px-4 py-1 text-xl bg-rose-50 text-rose-600 rounded-full border border-rose-200">
                             Save the date
                         </span>
                     </motion.div>
@@ -133,6 +133,15 @@ export default function Hero() {
                         >
                             Lễ thành hôn của (con) chúng tôi
                         </motion.p>
+
+                        <motion.h2
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ delay: 0.6 }}
+                            className="text-3xl sm:text-5xl font-serif bg-clip-text text-transparent bg-gradient-to-r from-rose-600 to-pink-600"
+                        >
+                            {config.data.groomName} & {config.data.brideName}
+                        </motion.h2>
 
                         {/* Parents Info Row */}
                         <motion.div className="flex flex-row justify-between text-gray-600 italic font-medium text-sm sm:text-base">
@@ -158,15 +167,6 @@ export default function Hero() {
                                 Bà: <span className="">{config.data.parentBride.split('&')[1]?.trim()}</span>
                             </motion.p>
                         </motion.div>
-
-                        <motion.h2
-                            initial={{ scale: 0.8, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{ delay: 0.6 }}
-                            className="text-3xl sm:text-5xl font-serif bg-clip-text text-transparent bg-gradient-to-r from-rose-600 to-pink-600"
-                        >
-                            {config.data.groomName} & {config.data.brideName}
-                        </motion.h2>
                     </div>
 
                     <motion.div

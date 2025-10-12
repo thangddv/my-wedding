@@ -1,179 +1,180 @@
-import { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion'
+import { Heart } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
 
-const section1Images = [
-  './images/8c030af44b59c10798482.jpg',
-  './images/c2657c463cebb6b5effa8.jpg',
-  './images/151c26e96744ed1ab4553.jpg',
-  './images/ace88912c8bf42e11bae4.jpg',
-  './images/71a4505e11f39badc2e21.jpg'
-];
-const section2Images = [
-  './images/5ff4d30392ae18f041bf5.jpg',
-  './images/b6a0995ad8f752a90be67.jpg',
-  './images/f8c244ee04438e1dd7529.jpg',
-];
-const section3Images = [
-  './images/fc67594b19e693b8caf712.jpg',
-  './images/TMT07165.JPG',
-];
 
-function useSlider(images) {
-  const [current, setCurrent] = useState(0);
-  const total = images.length;
-  const startX = useRef(null);
-  const isDragging = useRef(false);
-
-  const prevSlide = () => setCurrent((prev) => (prev - 1 + total) % total);
-  const nextSlide = () => setCurrent((prev) => (prev + 1) % total);
+function CardSlider({ images = [], width = 640, height = 480 }) {
+  const [index, setIndex] = useState(0);
+  const total = images.length || 0;
+  const timer = useRef(null);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % total);
-    }, 3000);
-    return () => clearInterval(timer);
+    if (total <= 1) return;
+    timer.current = setInterval(() => setIndex((i) => (i + 1) % total), 4000);
+    return () => clearInterval(timer.current);
   }, [total]);
 
-  const handleTouchStart = (e) => {
-    startX.current = e.touches[0].clientX;
-    isDragging.current = true;
-  };
-  const handleTouchMove = (e) => {
-    if (!isDragging.current) return;
-    const diff = e.touches[0].clientX - startX.current;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) prevSlide();
-      else nextSlide();
-      isDragging.current = false;
-    }
-  };
-  const handleTouchEnd = () => { isDragging.current = false; };
-  const handleMouseDown = (e) => { startX.current = e.clientX; isDragging.current = true; };
-  const handleMouseMove = (e) => {
-    if (!isDragging.current) return;
-    const diff = e.clientX - startX.current;
-    if (Math.abs(diff) > 50) {
-      if (diff > 0) prevSlide();
-      else nextSlide();
-      isDragging.current = false;
-    }
-  };
-  const handleMouseUp = () => { isDragging.current = false; };
+  const prev = () => setIndex((i) => (i - 1 + total) % total);
+  const next = () => setIndex((i) => (i + 1) % total);
 
-  return {
-    current,
-    images,
-    handleTouchStart,
-    handleTouchMove,
-    handleTouchEnd,
-    handleMouseDown,
-    handleMouseMove,
-    handleMouseUp,
-  };
+  // compute indices for prev, current, next (safe for small arrays)
+  const current = index % total;
+  const prevIndex = (current - 1 + total) % total;
+  const nextIndex = (current + 1) % total;
+  return (
+    <div className="w-full flex justify-center">
+      <div className="relative w-full max-w-[720px]">
+        <div className="relative h-0" style={{ paddingBottom: `${(height / width) * 130}%` }}>
+          {/* Left sub (prev) - positioned at ~15% */}
+          {total > 1 && (
+            <img
+              src={images[prevIndex]}
+              alt={`prev-${prevIndex}`}
+              className="absolute top-1/4 object-cover rounded-lg shadow-md transition-all duration-500 -translate-y-1/2"
+              style={{left: '15%', width: '32%', transform: 'translateX(-50%) scale(0.82)', zIndex: 10, opacity: 0.95 }}
+            />
+          )}
+
+          {/* Center main */}
+          {total > 0 && (
+            <img
+              src={images[current]}
+              alt={`current-${current}`}
+              className="absolute object-cover rounded-xl shadow-xl transition-all duration-500 -translate-y-1/2"
+              style={{ left: '50%', width: '58%', transform: 'translateX(-50%) scale(1)', zIndex: 20, opacity: 1 }}
+            />
+          )}
+
+          {/* Right sub (next) - positioned at ~85% */}
+          {total > 1 && (
+            <img
+              src={images[nextIndex]}
+              alt={`next-${nextIndex}`}
+              className="absolute top-1/4 object-cover rounded-lg shadow-md transition-all duration-500 -translate-y-1/2"
+              style={{ left: '85%', width: '32%', transform: 'translateX(-50%) scale(0.82)', zIndex: 10, opacity: 0.95 }}
+            />
+          )}
+        </div>
+
+        <button
+          onClick={prev}
+          className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow"
+          aria-label="Previous"
+        >
+          ‹
+        </button>
+        <button
+          onClick={next}
+          className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow"
+          aria-label="Next"
+        >
+          ›
+        </button>
+      </div>
+    </div>
+  );
 }
 
-export default function Gallery() {
-  const slider1 = useSlider(section1Images);
-  const slider2 = useSlider(section2Images);
-  const slider3 = useSlider(section3Images);
+const section1Images = [
+  './images/8c030af44b59c10798482.jpg'
+];
+const section2Images = [
+  './images/5ff4d30392ae18f041bf5.jpg'
+];
+const section3Images = [
+  './images/TMT06525.jpg',
+  './images/TMT06731.jpg',
+  './images/TMT06978.jpg',
+  './images/TMT07165.jpg',
+];
 
+export default function Gallery() {
   return (
     <section id="image" className="min-h-screen relative overflow-hidden">
       <div className="container mx-auto px-4 py-10 relative z-10 space-y-12">
-        {/* Section 1: 2/3 width left */}
-        <div className="flex justify-start w-full mb-8">
-          <div className="w-4/5 max-w-2xl">
-            <div className="mb-4 text-left">
-              <h2 className="text-2xl font-serif text-rose-600 mb-2">Tình yêu của chúng tớ bắt đầu từ nơi làm việc và khu chung cư chúng tớ ở</h2>
-            </div>
-            <div
-              className="relative aspect-video bg-gray-200 rounded-lg overflow-hidden shadow-lg"
-              onTouchStart={slider1.handleTouchStart}
-              onTouchMove={slider1.handleTouchMove}
-              onTouchEnd={slider1.handleTouchEnd}
-              onMouseDown={slider1.handleMouseDown}
-              onMouseMove={slider1.handleMouseMove}
-              onMouseUp={slider1.handleMouseUp}
-              onMouseLeave={slider1.handleMouseUp}
-              style={{ touchAction: 'pan-y' }}
-            >
-              <img
-                src={slider1.images[slider1.current]}
-                alt={`Section 1 image ${slider1.current + 1}`}
-                className="object-cover w-full h-full duration-500"
-              />
-              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1">
-                {slider1.images.map((_, idx) => (
-                  <span
-                    key={idx}
-                    className={`inline-block w-2 h-2 rounded-full ${idx === slider1.current ? 'bg-rose-500' : 'bg-white/70 border border-rose-300'}`}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Section 2: 2/3 width right */}
-        <div className="flex justify-end w-full mb-8">
-          <div className="w-4/5 max-w-2xl">
-            <div className="mb-4 text-right">
-              <h2 className="text-2xl font-serif text-rose-600 mb-2">Tình yêu chúng tớ lớn lên và có những chuyến đi cùng nhau</h2>
-            </div>
-            <div
-              className="relative aspect-video bg-gray-200 rounded-lg overflow-hidden shadow-lg"
-              onTouchStart={slider2.handleTouchStart}
-              onTouchMove={slider2.handleTouchMove}
-              onTouchEnd={slider2.handleTouchEnd}
-              onMouseDown={slider2.handleMouseDown}
-              onMouseMove={slider2.handleMouseMove}
-              onMouseUp={slider2.handleMouseUp}
-              onMouseLeave={slider2.handleMouseUp}
-              style={{ touchAction: 'pan-y' }}
-            >
-              <img
-                src={slider2.images[slider2.current]}
-                alt={`Section 2 image ${slider2.current + 1}`}
-                className="object-cover w-full h-full transition-all duration-500"
-              />
-              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1">
-                {slider2.images.map((_, idx) => (
-                  <span
-                    key={idx}
-                    className={`inline-block w-2 h-2 rounded-full ${idx === slider2.current ? 'bg-rose-500' : 'bg-white/70 border border-rose-300'}`}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* Section 3: full width */}
-        <div className="w-full mb-8">
-          <div className="mb-4 text-center">
-            <h2 className="text-2xl font-serif text-rose-600 mb-2">Và cuối cùng, bây giờ chúng tớ đến với nhau</h2>
-          </div>
-          <div
-            className="relative w-full max-w-4xl mx-auto aspect-video bg-gray-200 rounded-lg overflow-hidden shadow-lg"
-            onTouchStart={slider3.handleTouchStart}
-            onTouchMove={slider3.handleTouchMove}
-            onTouchEnd={slider3.handleTouchEnd}
-            onMouseDown={slider3.handleMouseDown}
-            onMouseMove={slider3.handleMouseMove}
-            onMouseUp={slider3.handleMouseUp}
-            onMouseLeave={slider3.handleMouseUp}
-            style={{ touchAction: 'pan-y' }}
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center space-y-4 mb-8"
+        >
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="inline-block text-rose-500 font-medium mb-2"
           >
-            <img
-              src={slider3.images[slider3.current]}
-              alt={`Section 3 image ${slider3.current + 1}`}
-              className="object-cover w-full h-full transition-all duration-500"
-            />
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1">
-              {slider3.images.map((_, idx) => (
-                <span
-                  key={idx}
-                  className={`inline-block w-2 h-2 rounded-full ${idx === slider3.current ? 'bg-rose-500' : 'bg-white/70 border border-rose-300'}`}
-                />
-              ))}
+            Hành trình của chúng tớ
+          </motion.span>
+
+          {/* Decorative Line */}
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            className="flex items-center justify-center gap-4 mt-6"
+          >
+            <div className="h-[1px] w-12 bg-rose-200" />
+            <div className="text-rose-400">
+              <Heart className="w-4 h-4" fill="currentColor" />
             </div>
+            <div className="h-[1px] w-12 bg-rose-200" />
+          </motion.div>
+        </motion.div>
+
+        {/* Section 1: image left, text right (responsive) - static */}
+        <div className="flex flex-col md:flex-row items-center w-full mb-8 gap-6">
+          <div className="w-full md:w-1/2 max-w-2xl">
+            <div className="relative aspect-video bg-gray-200 rounded-lg overflow-hidden shadow-lg">
+              <img src={section1Images[0]} alt="Section 1" className="object-cover w-full h-full" />
+            </div>
+          </div>
+
+          <div className="hidden md:flex items-center">
+            <div className="h-48 w-px bg-rose-100/60 mx-4" />
+          </div>
+
+          <div className="w-full md:w-1/2">
+            <div className="mb-4 text-left md:pl-4">
+              <h2 className="text-2xl font-serif text-rose-600 mb-2">Bắt đầu từ nơi làm việc và khu chung cư chúng tớ ở</h2>
+              {/* <p className="text-gray-600">Những kỷ niệm nhỏ, những lần đưa nhau đi làm, cà phê, và những buổi tối trên ban công chung cư đã dần chắp cánh cho chúng tớ.</p> */}
+            </div>
+          </div>
+        </div>
+
+        {/* Section 2: static grid */}
+          {/* Section 2: image left, text right (same layout as section 1) */}
+          <div className="flex flex-col md:flex-row items-center w-full mb-8 gap-6">
+            <div className="w-full md:w-1/2 max-w-2xl">
+              <div className="relative aspect-video bg-gray-200 rounded-lg overflow-hidden shadow-lg">
+                <img src={section2Images[0]} alt="Section 2" className="object-cover w-full h-full" />
+              </div>
+            </div>
+
+            <div className="hidden md:flex items-center">
+              <div className="h-48 w-px bg-rose-100/60 mx-4" />
+            </div>
+
+            <div className="w-full md:w-1/2">
+              <div className="mb-4 text-left md:pl-4">
+                <h2 className="text-2xl font-serif text-rose-600 mb-2">... đến những chuyến đi cùng nhau</h2>
+                {/* <p className="text-gray-600">Chúng tớ đã khám phá nhiều nơi cùng nhau — từ những chuyến đi cuối tuần đến những kỷ niệm nhỏ trên đường.</p> */}
+              </div>
+            </div>
+          </div>
+
+        {/* Section 3: heart mosaic from multiple images */}
+        <div className="w-full mb-12">
+          <div className="mb-4 text-center">
+            <h2 className="text-2xl font-serif text-rose-600 mb-2">Và cuối cùng là l đuờng</h2>
+          </div>
+          <div className="mx-auto w-full max-w-4xl">
+            {/* Card slider layer for Section 3 */}
+            <CardSlider images={section3Images} width={720} height={480} />
           </div>
         </div>
       </div>
