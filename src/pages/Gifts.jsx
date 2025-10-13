@@ -38,7 +38,7 @@ export default function Gifts() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={hasAnimated ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.3 }}
-                        className="text-4xl md:text-5xl font-serif text-gray-800"
+                        className="text-3xl font-serif text-gray-800"
                     >
                         Gửi quà mừng
                     </motion.h2>
@@ -55,30 +55,6 @@ export default function Gifts() {
                         <div className="h-[1px] w-12 bg-rose-200" />
                     </motion.div>
 
-                    {/* Message Container */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={hasAnimated ? { opacity: 1 } : {}}
-                        transition={{ delay: 0.5 }}
-                        className="space-y-4 max-w-md mx-auto"
-                    >
-                        {/* Vietnamese Wedding Wish */}
-                        <p className="font-arabic text-xl text-gray-800">
-                            Cảm ơn tấm lòng của bạn
-                        </p>
-                    </motion.div>
-
-                    {/* Optional: Additional Decorative Element */}
-                    <motion.div
-                        initial={{ scale: 0 }}
-                        animate={hasAnimated ? { scale: 1 } : {}}
-                        transition={{ delay: 0.6 }}
-                        className="flex items-center justify-center gap-3 pt-4"
-                    >
-                        <div className="h-px w-8 bg-rose-200/50" />
-                        <div className="w-1.5 h-1.5 rounded-full bg-rose-300" />
-                        <div className="h-px w-8 bg-rose-200/50" />
-                    </motion.div>
                 </motion.div>
 
                 {/* Bank Accounts Grid */}
@@ -130,6 +106,19 @@ export default function Gifts() {
                         </motion.div>
                     ))}
                 </div>
+
+                {/* Message Container */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={hasAnimated ? { opacity: 1 } : {}}
+                    transition={{ delay: 0.5 }}
+                    className="space-y-4 max-w-md mx-auto content-center text-center mt-12"
+                >
+                    {/* Vietnamese Wedding Wish */}
+                    <p className="italic font-serif text-gray-800">
+                        Cảm ơn tấm lòng của bạn
+                    </p>
+                </motion.div>
             </div>
         </section>
     </>)

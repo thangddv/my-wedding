@@ -78,15 +78,15 @@ const config = {
     banks: [
       {
         // Bank name
-        bank: "VietinBank",
+        bank: "VIB",
         // Account number
-        accountNumber: "1234567890",
+        accountNumber: "021717296",
         // Account holder name (all uppercase)
         accountName: "DONG VIET THANG",
       },
       {
         bank: "VIB",
-        accountNumber: "0987654321",
+        accountNumber: "022924465",
         accountName: "TRAN THI HAI YEN",
       }
       // You can add more banks with the same format

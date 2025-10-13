@@ -119,17 +119,17 @@ export default function Hero() {
                         transition={{ delay: 0.2 }}
                         className="inline-block mx-auto"
                     >
-                        <span className="font-serif px-4 py-1 text-xl bg-rose-50 text-rose-600 rounded-full border border-rose-200">
+                        <span className="font-serif px-4 py-1 text-lg bg-rose-50 text-rose-600 rounded-full border border-rose-200">
                             Save the date
                         </span>
                     </motion.div>
 
-                    <div className="space-y-4 pt-6">
+                    <div className="space-y-4 pt-6 italic">
                         <motion.p
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.4 }}
-                            className="text-gray-500 italic font-light text-base sm:text-lg"
+                            className="text-gray-500 italic text-base sm:text-lg"
                         >
                             Lễ thành hôn của (con) chúng tôi
                         </motion.p>
@@ -138,22 +138,22 @@ export default function Hero() {
                             initial={{ scale: 0.8, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             transition={{ delay: 0.6 }}
-                            className="text-3xl sm:text-5xl font-serif bg-clip-text text-transparent bg-gradient-to-r from-rose-600 to-pink-600"
+                            className="pt-8 pb-6 text-3xl font-serif bg-clip-text text-transparent bg-gradient-to-r from-rose-600 to-pink-600"
                         >
                             {config.data.groomName} & {config.data.brideName}
                         </motion.h2>
 
                         {/* Parents Info Row */}
-                        <motion.div className="flex flex-row justify-between text-gray-600 italic font-medium text-sm sm:text-base">
+                        <motion.div className="flex flex-row justify-between text-gray-600 font-medium text-sm italic">
                             <motion.p
                                 initial={{ opacity: 0, x: -30 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.3 }}
                                 className="flex-1 text-center"
                             >   
-                                Nhà Trai <br/>
-                                Ông: <span className="">{config.data.parentGroom.split('&')[0]?.trim()}</span><br/>
-                                Bà: <span className="">{config.data.parentGroom.split('&')[1]?.trim()}</span>
+                                NHÀ TRAI <br/>
+                                <span className="font-light">Ông: {config.data.parentGroom.split('&')[0]?.trim()}</span><br/>
+                                <span className="font-light">Bà: {config.data.parentGroom.split('&')[1]?.trim()}</span>
                             </motion.p>
 
                             <motion.p
@@ -162,9 +162,9 @@ export default function Hero() {
                                 transition={{ delay: 0.3 }}
                                 className="flex-1 text-center"
                             >   
-                                Nhà Gái <br/>
-                                Ông: <span className="">{config.data.parentBride.split('&')[0]?.trim()}</span><br/>
-                                Bà: <span className="">{config.data.parentBride.split('&')[1]?.trim()}</span>
+                                NHÀ GÁI <br/>
+                                <span className="font-light">Ông: {config.data.parentBride.split('&')[0]?.trim()}</span><br/>
+                                <span className="font-light">Bà: {config.data.parentBride.split('&')[1]?.trim()}</span>
                             </motion.p>
                         </motion.div>
                     </div>
@@ -191,12 +191,12 @@ export default function Hero() {
                                         className="flex items-center justify-center space-x-2"
                                     >
                                         <Calendar className="w-4 h-4 text-rose-400" />
-                                        <span className="text-gray-700 font-medium text-sm sm:text-base">
+                                        <span className="text-gray-700 font-medium">
                                             {formatEventDate(config.data.date, "full")}
                                         </span>
                                     </motion.div>
 
-                                    <motion.div
+                                    {/* <motion.div
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
                                         transition={{ delay: 1 }}
@@ -206,7 +206,7 @@ export default function Hero() {
                                         <span className="text-gray-700 font-medium text-sm sm:text-base">
                                             {config.data.time}
                                         </span>
-                                    </motion.div>
+                                    </motion.div> */}
                                 </div>
 
                                 <div className="flex items-center justify-center gap-3">

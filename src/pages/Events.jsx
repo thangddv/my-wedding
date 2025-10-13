@@ -38,20 +38,10 @@ export default function Events() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.3 }}
-                            className="text-3xl md:text-4xl font-serif text-gray-800 leading-tight"
+                            className="text-3xl font-serif text-gray-800 leading-tight"
                         >
                             Bữa tiệc thân mật
                         </motion.h2>
-
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.4 }}
-                            className="text-gray-500 max-w-md mx-auto"
-                        >
-                            Chúng tôi rất hân hạnh được đón tiếp bạn trong ngày vui trọng đại của chúng tôi.
-                        </motion.p>
 
                         {/* Decorative Line */}
                         <motion.div
@@ -79,6 +69,16 @@ export default function Events() {
                     >
                         <EventCards events={config.data.agenda} />
                     </motion.div>
+
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.4 }}
+                        className="text-gray-500 max-w-md mx-auto cntent-center text-center mt-8 italic"
+                    >
+                        Chúng tôi rất hân hạnh được đón tiếp bạn trong ngày vui trọng đại của chúng tôi.
+                    </motion.p>
                 </motion.div>
             </section>
         </>

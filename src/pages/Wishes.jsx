@@ -26,12 +26,13 @@ export default function Wishes() {
     const [attendance, setAttendance] = useState('');
     const [isOpen, setIsOpen] = useState(false);
     const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
     const [wishes, setWishes] = useState([]);
 
     const options = [
-        { value: 'ATTENDING', label: 'Sẽ tham dự' },
-        { value: 'NOT_ATTENDING', label: 'Không thể tham dự' },
-        { value: 'MAYBE', label: 'Có thể sẽ tham dự' }
+        { value: 'ATTENDING', label: 'Tham dự' },
+        { value: 'NOT_ATTENDING', label: 'Không tham dự' },
+        { value: 'MAYBE', label: 'Có thể' }
     ];
 
     // Fetch wishes from Google Sheets on mount
@@ -48,6 +49,7 @@ export default function Wishes() {
         setIsSubmitting(true);
         const wishData = {
             name,
+            phone_number: phone,
             message: newWish,
             attendance,
         };
@@ -66,6 +68,7 @@ export default function Wishes() {
             setWishes(data.reverse());
             setNewWish('');
             setName('');
+            setPhone('');
             setAttendance('');
             setIsSubmitting(false);
             setShowConfetti(true);
@@ -98,22 +101,13 @@ export default function Wishes() {
                     transition={{ duration: 0.8 }}
                     className="text-center space-y-4 mb-8"
                 >
-                    <motion.span
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="inline-block text-rose-500 font-medium"
-                    >
-                        Gửi lời chúc và lời chào tốt đẹp nhất
-                    </motion.span>
-
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
-                        className="text-4xl md:text-5xl font-serif text-gray-800"
+                        className="text-3xl font-serif text-gray-800"
                     >
-                        Lời chúc
+                       Gửi lời chúc
                     </motion.h2>
 
                     {/* Decorative Divider */}
@@ -224,56 +218,47 @@ export default function Wishes() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.1 }}
-                                    className="space-y-2 relative"
+                                    className="space-y-2"
                                 >
                                     <div className="flex items-center space-x-2 text-gray-500 text-sm mb-1">
                                         <Calendar className="w-4 h-4" />
                                         <span>Bạn sẽ tham dự chứ?</span>
                                     </div>
-                                    <button
-                                        type="button"
-                                        onClick={() => setIsOpen(!isOpen)}
-                                        className="w-full px-4 py-2.5 rounded-xl bg-white/50 border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-all duration-200 text-left flex items-center justify-between"
-                                    >
-                                        <span className={attendance ? 'text-gray-700' : 'text-gray-400'}>
-                                            {attendance ?
-                                                options.find(opt => opt.value === attendance)?.label
-                                                : 'Chọn trạng thái tham dự...'}
-                                        </span>
-                                        <ChevronDown
-                                            className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`}
-                                        />
-                                    </button>
-                                    <AnimatePresence>
-                                        {isOpen && (
-                                            <motion.div
-                                                initial={{ opacity: 0, y: -10 }}
-                                                animate={{ opacity: 1, y: 0 }}
-                                                exit={{ opacity: 0, y: -10 }}
-                                                className="absolute z-10 w-full mt-1 bg-white rounded-xl shadow-lg border border-rose-100 overflow-hidden"
+                                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                        {options.map((option) => (
+                                            <button
+                                                key={option.value}
+                                                type="button"
+                                                onClick={() => setAttendance(option.value)}
+                                                className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-colors text-sm
+                                                    ${attendance === option.value ? 'bg-rose-50 text-rose-600' : 'bg-white/50 border-rose-100 text-gray-700 hover:bg-rose-50'}`}
                                             >
-                                                {options.map((option) => (
-                                                    <motion.button
-                                                        key={option.value}
-                                                        type="button"
-                                                        onClick={() => {
-                                                            setAttendance(option.value);
-                                                            setIsOpen(false);
-                                                        }}
-                                                        whileHover={{ backgroundColor: 'rgb(255, 241, 242)' }}
-                                                        className={`w-full px-4 py-2.5 text-left transition-colors
-                                        ${attendance === option.value
-                                                                ? 'bg-rose-50 text-rose-600'
-                                                                : 'text-gray-700 hover:bg-rose-50'
-                                                            }`}
-                                                    >
-                                                        {option.label}
-                                                    </motion.button>
-                                                ))}
-                                            </motion.div>
-                                        )}
-                                    </AnimatePresence>
+                                                <input
+                                                    type="checkbox"
+                                                    readOnly
+                                                    checked={attendance === option.value}
+                                                    className="w-4 h-4 rounded"
+                                                />
+                                                <span>{option.label}</span>
+                                            </button>
+                                        ))}
+                                    </div>
                                 </motion.div>
+                                {/* Phone Input */}
+                                <div className="space-y-2">
+                                    <div className="flex items-center space-x-2 text-gray-500 text-sm mb-1">
+                                        <User className="w-4 h-4" />
+                                        <span>Số điện thoại</span>
+                                    </div>
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        value={phone}
+                                        onChange={e => setPhone(e.target.value)}
+                                        placeholder="Nhập số điện thoại"
+                                        className="w-full px-4 py-2.5 rounded-xl bg-white/50 border border-rose-100 focus:border-rose-300 focus:ring focus:ring-rose-200 focus:ring-opacity-50 transition-all duration-200 text-gray-700 placeholder-gray-400"
+                                    />
+                                </div>
                                 {/* Wish Textarea */}
                                 <div className="space-y-2">
                                     <div className="flex items-center space-x-2 text-gray-500 text-sm mb-1">
@@ -303,7 +288,7 @@ export default function Wishes() {
                                             : 'bg-rose-500 hover:bg-rose-600'}`}
                                 >
                                     <Send className="w-4 h-4" />
-                                    <span>{isSubmitting ? 'Đang gửi...' : 'Gửi lời chúc'}</span>
+                                    <span>{isSubmitting ? 'Đang gửi...' : 'Hoàn thành'}</span>
                                 </motion.button>
                             </div>
                         </div>

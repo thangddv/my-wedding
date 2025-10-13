@@ -105,9 +105,9 @@ export default function Gallery() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="inline-block text-rose-500 font-medium mb-2"
+            className="text-3xl font-serif text-gray-800"
           >
-            Hành trình của chúng tớ
+              Hành trình bên nhau
           </motion.span>
 
           {/* Decorative Line */}
@@ -160,8 +160,8 @@ export default function Gallery() {
             </div>
 
             <div className="w-full md:w-1/2">
-              <div className="mb-4 text-left md:pl-4">
-                <h2 className="text-2xl font-serif text-rose-600 mb-2">... đến những chuyến đi cùng nhau</h2>
+              <div className="mb-4 text-left md:pl-4 content-center text-center">
+                <h2 className="text-lg italic font-serif text-rose-600 mb-2">... đến những chuyến đi cùng nhau</h2>
                 {/* <p className="text-gray-600">Chúng tớ đã khám phá nhiều nơi cùng nhau — từ những chuyến đi cuối tuần đến những kỷ niệm nhỏ trên đường.</p> */}
               </div>
             </div>
@@ -170,7 +170,7 @@ export default function Gallery() {
         {/* Section 3: heart mosaic from multiple images */}
         <div className="w-full mb-12">
           <div className="mb-4 text-center">
-            <h2 className="text-2xl font-serif text-rose-600 mb-2">Và cuối cùng là l đuờng</h2>
+            <h2 className="text-2xl font-serif text-rose-600 mb-2 italic">Và cuối cùng là lễ đuờng</h2>
           </div>
           <div className="mx-auto w-full max-w-4xl">
             {/* Card slider layer for Section 3 */}
