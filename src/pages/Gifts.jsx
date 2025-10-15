@@ -88,16 +88,16 @@ export default function Gifts() {
                                         <motion.button
                                             whileHover={{ scale: 1.05 }}
                                             whileTap={{ scale: 0.95 }}
-                                            onClick={() => copyToClipboard(account.accountNumber, account.bank)}
+                                            onClick={() => copyToClipboard(account.accountNumber, account.accountName)}
                                             className="flex items-center space-x-1 text-rose-500 hover:text-rose-600"
                                         >
-                                            {copiedAccount === account.bank ? (
+                                            {copiedAccount === account.accountName ? (
                                                 <CheckCircle className="w-4 h-4" />
                                             ) : (
                                                 <Copy className="w-4 h-4" />
                                             )}
                                             <span className="text-sm">
-                                                {copiedAccount === account.bank ? 'Đã sao chép!' : 'Sao chép'}
+                                                {copiedAccount === account.accountName ? 'Đã sao chép!' : 'Sao chép'}
                                             </span>
                                         </motion.button>
                                     </div>
@@ -117,6 +117,27 @@ export default function Gifts() {
                     {/* Vietnamese Wedding Wish */}
                     <p className="italic font-serif text-gray-800">
                         Cảm ơn tấm lòng của bạn
+                    </p>
+                </motion.div>
+
+                                {/* Message Container */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={hasAnimated ? { opacity: 1 } : {}}
+                    transition={{ delay: 0.5 }}
+                    className="space-y-4 max-w-md mx-auto content-center text-center mt-12"
+                >
+                    {/* Vietnamese Wedding Wish */}
+                    <p className="italic font-serif text-gray-800">
+                        Thông tin chi tiết về lịch trình và phương tiện di chuyển trong hôn lễ bọn tớ sẽ cập nhật ở đây: 
+                        <a
+                            href="https://tinyurl.com/thangyenwedding"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-rose-500 underline hover:text-rose-600"
+                        >
+                             https://tinyurl.com/thangyenwedding
+                        </a>
                     </p>
                 </motion.div>
             </div>

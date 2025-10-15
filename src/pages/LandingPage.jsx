@@ -9,7 +9,7 @@ const LandingPage = ({ onOpenInvitation }) => (
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
-    className="min-h-screen relative overflow-hidden"
+    className="fixed inset-0 z-10 flex items-center justify-center px-4"
   >
     {/* Decorative Background */}
     <div className="absolute inset-0 bg-gradient-to-b from-white via-rose-50/30 to-white" />
@@ -41,7 +41,7 @@ const LandingPage = ({ onOpenInvitation }) => (
             className="flex flex-col gap-4 mb-6 sm:mb-8 items-center"
           >
             <img
-              src="images/TMT07165.jpg"
+              src="./images/7a690c70cd6f4031197e12.jpg"
               alt="Song Hy"
               className="w-32 h-32 sm:w-40 sm:h-40 object-cover rounded-full shadow-lg border-4 border-rose-100 bg-white"
             />

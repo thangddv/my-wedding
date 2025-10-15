@@ -26,7 +26,7 @@ const config = {
     // Full address of the wedding venue
     address: "Hoàng Xá 1, P.Ái Quốc, TP.Hải Phòng",
     // Image that appears when link is shared on social media
-    ogImage: "./images/og-image.jpg",
+    ogImage: "./images/7a690c70cd6f4031197e12.jpg",
     // Icon that appears in browser tab
     favicon: "./favicon.png",
     // Google Apps Script Web App key for handling wishes submission
@@ -37,10 +37,10 @@ const config = {
         // First event name
         title: "Lễ cưới nhà Trai",
         date: "2025-11-23",
-        startTime: "10:00",
-        endTime: "12:30",
+        startTime: "09:30",
+        endTime: "13:00",
         location: "Hoàng Xá 1, P.Ái Quốc, TP.Hải Phòng",
-        address: "Nhà văn hóa Thiếu Nhi Hải Phòng",
+        address: "Nhà văn hóa Tiền Phong",
         // Google Maps link for location (short clickable link)
         maps_url: "https://maps.app.goo.gl/2H1jpf9CxzMMdo1K7",
       },
@@ -49,15 +49,15 @@ const config = {
         // Event date (format: YYYY-MM-DD)
         date: "2025-10-26",
         // Start time (format: HH:MM)
-        startTime: "10:00",
+        startTime: "10:30",
         // End time (format: HH:MM)
         endTime: "12:30",
         // Event venue
-        location: "Thịnh Lang, TP.Hòa Bình",
+        location: "Lê Thánh Tông, P.Hòa Bình, T.Phú Thọ",
         // Full address
-        address: "Khách Sạn Mường Thanh Luxury Hòa Bình",
+        address: "Tầng 5 - Diamond Palace",
+        maps_url: "https://maps.app.goo.gl/as6mVfD6QaJNhNVB7",
       }
-      // You can add more agenda items with the same format
     ],
 
     // Background music settings

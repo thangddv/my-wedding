@@ -8,6 +8,7 @@ import {
   CalendarPlus,
   X,
   Chrome,
+  Locate,
   Apple,
   Calendar as CalendarIcon,
   ExternalLink
@@ -157,6 +158,10 @@ END:VCALENDAR`;
           <div className="flex items-center space-x-3">
             <Clock className="w-5 h-5 text-rose-500" />
             <span>{eventData.startTime} - {eventData.endTime}</span>
+          </div>
+          <div className="flex items-center space-x-3">
+            <Locate className="w-5 h-5 text-rose-500" />
+            <span>{eventData.address}</span>
           </div>
           <div className="flex items-center space-x-3">
             <MapPin className="w-5 h-5 text-rose-500" />

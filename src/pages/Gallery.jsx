@@ -10,7 +10,7 @@ function CardSlider({ images = [], width = 640, height = 480 }) {
 
   useEffect(() => {
     if (total <= 1) return;
-    timer.current = setInterval(() => setIndex((i) => (i + 1) % total), 4000);
+    timer.current = setInterval(() => setIndex((i) => (i + 1) % total), 2000);
     return () => clearInterval(timer.current);
   }, [total]);
 
@@ -76,16 +76,29 @@ function CardSlider({ images = [], width = 640, height = 480 }) {
 }
 
 const section1Images = [
-  './images/8c030af44b59c10798482.jpg'
+  "./images/9a23f9873a98b7c6ee89.jpg",
 ];
 const section2Images = [
   './images/5ff4d30392ae18f041bf5.jpg'
 ];
 const section3Images = [
-  './images/TMT06525.jpg',
-  './images/TMT06731.jpg',
-  './images/TMT06978.jpg',
-  './images/TMT07165.jpg',
+  "./images/1eba4f818e9e03c05a8f9.jpg",
+  "./images/2cb35283939c1ec2478d4.jpg",
+  "./images/6fbd345cc3434e1d175219.jpg",
+  "./images/8ea4a49f6580e8deb1916.jpg",
+  "./images/7a690c70cd6f4031197e12.jpg",
+  "./images/07ae19b8d8a755f90cb611.jpg",
+  "./images/94e58bf34aecc7b29efd8.jpg",
+  "./images/520d9d785c67d139887617.jpg",
+  "./images/563a4c298d36006859277.jpg",
+  "./images/07ae19b8d8a755f90cb611.jpg",
+  "./images/224779b88ea703f95ab620.jpg",
+  "./images/19856748a6572b0972462.jpg",
+  "./images/51435750964f1b11425e10.jpg",
+  "./images/a03c754cb453390d604215.jpg",
+  "./images/db2b43dbb4c4399a60d518.jpg",
+  "./images/e9be8c734d6cc032997d5.jpg",
+  "./images/e87e1873d96c54320d7d16.jpg"
 ];
 
 export default function Gallery() {
@@ -127,15 +140,15 @@ export default function Gallery() {
         </motion.div>
 
         {/* Section 1: image left, text right (responsive) - static */}
-        <div className="flex flex-col items-center w-full mb-8 gap-6">
-          <div className="w-full md:w-1/2 max-w-2xl">
+        <div className="flex flex-col items-center w-full mb-8 pl-2 pr-2 gap-6">
+          <div className="w-full max-w-2xl">
             <div className="relative aspect-video bg-gray-200 rounded-lg overflow-hidden shadow-lg">
               <img src={section1Images[0]} alt="Section 1" className="object-cover w-full h-full" />
             </div>
           </div>
 
-          <div className="w-full md:w-1/2">
-            <div className="text-left md:pl-4 content-center text-center">
+          <div className="w-full">
+            <div className="text-left  content-center text-center">
               <h2 className="text-lg font-serif text-rose-600">Bắt đầu từ nơi làm việc và khu chung cư chúng tớ ở ...</h2>
               {/* <p className="text-gray-600">Những kỷ niệm nhỏ, những lần đưa nhau đi làm, cà phê, và những buổi tối trên ban công chung cư đã dần chắp cánh cho chúng tớ.</p> */}
             </div>
@@ -144,14 +157,14 @@ export default function Gallery() {
 
         {/* Section 2: static grid */}
           {/* Section 2: image left, text right (same layout as section 1) */}
-          <div className="flex flex-col items-center w-full gap-6">
-            <div className="w-full md:w-1/2 max-w-2xl">
+          <div className="flex flex-col items-center w-full pl-2 pr-2 gap-6">
+            <div className="max-w-2xl">
               <div className="relative aspect-video bg-gray-200 rounded-lg overflow-hidden shadow-lg">
                 <img src={section2Images[0]} alt="Section 2" className="object-cover w-full h-full" />
               </div>
             </div>
 
-            <div className="w-full md:w-1/2">
+            <div className="">
               <div className="text-left content-center text-center">
                 <h2 className="text-lg italic font-serif text-rose-600">... đến những chuyến đi cùng nhau</h2>
                 {/* <p className="text-gray-600">Chúng tớ đã khám phá nhiều nơi cùng nhau — từ những chuyến đi cuối tuần đến những kỷ niệm nhỏ trên đường.</p> */}
