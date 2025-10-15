@@ -12,7 +12,7 @@ const config = {
     // Groom's parents names
     parentGroom: "Đồng Văn Viết & Nguyễn Thị Nhàn",
     // Bride's parents names
-    parentBride: "Trần Văn Tài & Đỗ Thu Hường",
+    parentBride: "Trần Văn Tài & Đỗ Thị Hường",
     // Wedding date (format: YYYY-MM-DD)
     date: "2025-11-01",
     // Google Maps embed code to display map on website

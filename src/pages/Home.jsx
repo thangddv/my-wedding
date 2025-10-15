@@ -1,24 +1,21 @@
-import { Calendar, Clock, Heart } from 'lucide-react'
+import { Calendar, Heart } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react';
 import config from '@/config/config';
 import { formatEventDate } from '@/lib/formatEventDate';
-import { safeBase64 } from '@/lib/base64';
 
 export default function Hero() {
-    const [guestName, setGuestName] = useState('');
+    const [guestName, setGuestName] = useState('Anh/Chị/Bạn/Em');
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const guestParam = urlParams.get('guest');
 
-        if (guestParam) {
+        if (guestParam && guestParam.trim() !== '') {
             try {
-                const decodedName = safeBase64.decode(guestParam);
                 setGuestName(guestParam);
             } catch (error) {
                 console.error('Error decoding guest name:', error);
-                setGuestName('');
             }
         }
     }, []);
