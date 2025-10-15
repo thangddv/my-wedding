@@ -106,7 +106,7 @@ export default function Hero() {
 
     return (
         <>
-            <section id="home" className="flex flex-col items-center justify-center px-4 py-5 sm:py-5 text-center relative overflow-hidden">
+            <section id="home" className="flex flex-col items-center justify-center px-4 text-center relative overflow-hidden">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -138,7 +138,7 @@ export default function Hero() {
                             initial={{ scale: 0.8, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             transition={{ delay: 0.6 }}
-                            className="pt-8 pb-6 text-3xl font-serif bg-clip-text text-transparent bg-gradient-to-r from-rose-600 to-pink-600"
+                            className="pt-4 pb-4 text-3xl font-serif bg-clip-text text-transparent bg-gradient-to-r from-rose-600 to-pink-600"
                         >
                             {config.data.groomName} & {config.data.brideName}
                         </motion.h2>

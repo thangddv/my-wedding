@@ -127,20 +127,16 @@ export default function Gallery() {
         </motion.div>
 
         {/* Section 1: image left, text right (responsive) - static */}
-        <div className="flex flex-col md:flex-row items-center w-full mb-8 gap-6">
+        <div className="flex flex-col items-center w-full mb-8 gap-6">
           <div className="w-full md:w-1/2 max-w-2xl">
             <div className="relative aspect-video bg-gray-200 rounded-lg overflow-hidden shadow-lg">
               <img src={section1Images[0]} alt="Section 1" className="object-cover w-full h-full" />
             </div>
           </div>
 
-          <div className="hidden md:flex items-center">
-            <div className="h-48 w-px bg-rose-100/60 mx-4" />
-          </div>
-
           <div className="w-full md:w-1/2">
-            <div className="mb-4 text-left md:pl-4">
-              <h2 className="text-2xl font-serif text-rose-600 mb-2">Bắt đầu từ nơi làm việc và khu chung cư chúng tớ ở</h2>
+            <div className="text-left md:pl-4 content-center text-center">
+              <h2 className="text-lg font-serif text-rose-600">Bắt đầu từ nơi làm việc và khu chung cư chúng tớ ở ...</h2>
               {/* <p className="text-gray-600">Những kỷ niệm nhỏ, những lần đưa nhau đi làm, cà phê, và những buổi tối trên ban công chung cư đã dần chắp cánh cho chúng tớ.</p> */}
             </div>
           </div>
@@ -148,20 +144,16 @@ export default function Gallery() {
 
         {/* Section 2: static grid */}
           {/* Section 2: image left, text right (same layout as section 1) */}
-          <div className="flex flex-col md:flex-row items-center w-full mb-8 gap-6">
+          <div className="flex flex-col items-center w-full gap-6">
             <div className="w-full md:w-1/2 max-w-2xl">
               <div className="relative aspect-video bg-gray-200 rounded-lg overflow-hidden shadow-lg">
                 <img src={section2Images[0]} alt="Section 2" className="object-cover w-full h-full" />
               </div>
             </div>
 
-            <div className="hidden md:flex items-center">
-              <div className="h-48 w-px bg-rose-100/60 mx-4" />
-            </div>
-
             <div className="w-full md:w-1/2">
-              <div className="mb-4 text-left md:pl-4 content-center text-center">
-                <h2 className="text-lg italic font-serif text-rose-600 mb-2">... đến những chuyến đi cùng nhau</h2>
+              <div className="text-left content-center text-center">
+                <h2 className="text-lg italic font-serif text-rose-600">... đến những chuyến đi cùng nhau</h2>
                 {/* <p className="text-gray-600">Chúng tớ đã khám phá nhiều nơi cùng nhau — từ những chuyến đi cuối tuần đến những kỷ niệm nhỏ trên đường.</p> */}
               </div>
             </div>
