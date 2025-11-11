@@ -2,12 +2,33 @@ import EventCards from '@/components/EventsCard'
 import config from '@/config/config'
 import { motion } from 'framer-motion'
 import { Heart } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 export default function Events() {
+    const [eventsToShow, setEventsToShow] = useState([]);
+
+    useEffect(() => {
+        try {
+            const params = new URLSearchParams(window.location.search);
+            const event_idx = params.get('event');
+            let item = [];
+            if (event_idx === 'hanhphuc'|| event_idx === 'chieu')
+                item = [config.data.agenda[0]];
+            else if (event_idx === 'vuimung' || event_idx === 'tatca')
+                item = [config.data.agenda[1], config.data.agenda[2]];
+            else 
+                item = [config.data.agenda[2]];
+            setEventsToShow(item);
+            return;
+        } catch (err) {
+            console.error(err);
+        }
+    }, []);
+
     return (
         <>
             {/* Event Section */}
-            <section id="event" className="min-h-screen relative overflow-hidden">
+            <section id="event" className="relative overflow-hidden">
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -67,7 +88,7 @@ export default function Events() {
                         transition={{ duration: 0.8, delay: 0.6 }}
                         className="max-w-2xl mx-auto"
                     >
-                        <EventCards events={config.data.agenda} />
+                        <EventCards events={eventsToShow} />
                     </motion.div>
 
                     <motion.p

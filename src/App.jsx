@@ -52,11 +52,12 @@ function App() {
         <meta name="description" content={config.data.description} />
 
         {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
+        {/* <meta property="og:type" content="website" />
         <meta property="og:url" content={window.location.href} />
         <meta property="og:title" content={config.data.title} />
-        <meta property="og:description" content={config.data.description} />
-        <meta property="og:image" content={config.data.ogImage} />
+        <meta property="og:description" content={config.data.description} /> */}
+        {/* <meta property="og:image:secure_url" content={config.data.ogImage} />
+        <meta property="og:image:type" content="image/jpg" />  */}
 
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />

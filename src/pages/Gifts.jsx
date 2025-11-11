@@ -116,11 +116,11 @@ export default function Gifts() {
                 >
                     {/* Vietnamese Wedding Wish */}
                     <p className="italic font-serif text-gray-800">
-                        Cảm ơn tấm lòng của bạn
+                        Cảm ơn tấm lòng của bạn!
                     </p>
                 </motion.div>
 
-                                {/* Message Container */}
+                {/* Message Container */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={hasAnimated ? { opacity: 1 } : {}}
@@ -128,12 +128,11 @@ export default function Gifts() {
                     className="space-y-4 max-w-md mx-auto content-center text-center mt-12"
                 >
                     {/* Vietnamese Wedding Wish */}
-                    <p className="italic font-serif text-gray-800">
-                        Thông tin chi tiết về lịch trình và phương tiện di chuyển trong hôn lễ bọn tớ sẽ cập nhật ở đây: 
+                    <p className="italic text-gray-800">
+                        Chi tiết về lịch trình và phương tiện di chuyển từ Hà Nội sẽ cập nhật ở đây: 
                         <a
                             href="https://tinyurl.com/thangyenwedding"
                             target="_blank"
-                            rel="noopener noreferrer"
                             className="text-rose-500 underline hover:text-rose-600"
                         >
                              https://tinyurl.com/thangyenwedding

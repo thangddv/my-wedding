@@ -143,7 +143,7 @@ export default function Gallery() {
         <div className="flex flex-col items-center w-full mb-8 pl-2 pr-2 gap-6">
           <div className="w-full max-w-2xl">
             <div className="relative aspect-video bg-gray-200 rounded-lg overflow-hidden shadow-lg">
-              <img src={section1Images[0]} alt="Section 1" className="object-cover w-full h-full" />
+              <img src={section1Images[0]} alt="Section 1" className="object-contain w-full h-full" />
             </div>
           </div>
 

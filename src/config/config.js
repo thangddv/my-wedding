@@ -14,19 +14,19 @@ const config = {
     // Bride's parents names
     parentBride: "Trần Văn Tài & Đỗ Thị Hường",
     // Wedding date (format: YYYY-MM-DD)
-    date: "2025-11-01",
+    date: "2025-11-23",
     // Google Maps embed code to display map on website
     // How to get: open Google Maps → select location → Share → Embed → copy link
     maps_embed:
       "https://www.google.com/maps/embed?pb=!1m13!1m11!1m3!1d706.9384991270489!2d106.382803898823!3d20.93038811510843!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2s!4v1757056374084!5m2!1sen!2s",
     // Event time (free format, example: "10:00 - 12:00 WIB")
-    time: "11:00 - 13:00",
+    time: "10:30 - 12:00",
     // Venue/building name
     location: "Nhà văn hóa Thiếu Nhi Hải Phòng",
     // Full address of the wedding venue
     address: "Hoàng Xá 1, P.Ái Quốc, TP.Hải Phòng",
     // Image that appears when link is shared on social media
-    ogImage: "./images/7a690c70cd6f4031197e12.jpg",
+    ogImage: "https://raw.githubusercontent.com/thangddv/my-wedding/refs/heads/main/public/images/7a690c70cd6f4031197e12.jpg",
     // Icon that appears in browser tab
     favicon: "./favicon.png",
     // Google Apps Script Web App key for handling wishes submission
@@ -35,28 +35,36 @@ const config = {
     agenda: [
       {
         // First event name
-        title: "Lễ cưới nhà Trai",
-        date: "2025-11-23",
-        startTime: "09:30",
-        endTime: "13:00",
+        title: "Tiệc cưới nhà Trai",
+        date: "2025-11-22",
+        startTime: "16:00",
+        endTime: "19:00",
         location: "Hoàng Xá 1, P.Ái Quốc, TP.Hải Phòng",
         address: "Nhà văn hóa Tiền Phong",
         // Google Maps link for location (short clickable link)
         maps_url: "https://maps.app.goo.gl/2H1jpf9CxzMMdo1K7",
       },
       {
-        title: "Lễ cưới nhà Gái",
-        // Event date (format: YYYY-MM-DD)
-        date: "2025-10-26",
-        // Start time (format: HH:MM)
-        startTime: "10:30",
-        // End time (format: HH:MM)
-        endTime: "12:30",
-        // Event venue
-        location: "Lê Thánh Tông, P.Hòa Bình, T.Phú Thọ",
-        // Full address
-        address: "Tầng 5 - Diamond Palace",
-        maps_url: "https://maps.app.goo.gl/as6mVfD6QaJNhNVB7",
+        // First event name
+        title: "Tiệc áp rạp nhà Trai",
+        date: "2025-11-22",
+        startTime: "16:00",
+        endTime: "19:00",
+        location: "Hoàng Xá 1, P.Ái Quốc, TP.Hải Phòng",
+        address: "Nhà văn hóa Tiền Phong",
+        // Google Maps link for location (short clickable link)
+        maps_url: "https://maps.app.goo.gl/2H1jpf9CxzMMdo1K7",
+      },
+      {
+        // First event name
+        title: "Tiệc cưới nhà Trai",
+        date: "2025-11-23",
+        startTime: "09:00",
+        endTime: "12:00",
+        location: "Hoàng Xá 1, P.Ái Quốc, TP.Hải Phòng",
+        address: "Nhà văn hóa Tiền Phong",
+        // Google Maps link for location (short clickable link)
+        maps_url: "https://maps.app.goo.gl/2H1jpf9CxzMMdo1K7",
       }
     ],
 
