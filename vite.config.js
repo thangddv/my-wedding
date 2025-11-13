@@ -10,4 +10,14 @@ export default defineConfig({
             '@': path.resolve(__dirname, './src'),
         },
     },
+    server: {
+        proxy: {
+          '/api': {
+                target: 'https://script.google.com/macros/s/AKfycbx3GP6TIo5plNswZybfWm25YwQtx6G7D3k5Qp8kLpxShdJVzXUNVg7Em9YA7c1rwOsT/exec',
+                changeOrigin: true,
+                secure: false,
+                rewrite: path => path.replace('/api', ''),
+          }
+        },
+      },
 });

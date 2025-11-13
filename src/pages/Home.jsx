@@ -13,7 +13,7 @@ export default function Hero() {
 
         if (guestParam && guestParam.trim() !== '') {
             try {
-                setGuestName(guestParam.replace('-', ' '));
+                setGuestName(guestParam.replaceAll('-', ' '));
             } catch (error) {
                 console.error('Error decoding guest name:', error);
             }

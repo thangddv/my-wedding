@@ -17,7 +17,7 @@ import { useState, useEffect } from 'react';
 import { formatEventDate } from '@/lib/formatEventDate';
 import config from '@/config/config';
 
-const API_URL = `https://script.google.com/macros/s/${config.data.appScriptKey}/exec`;
+const API_URL = '/api';
 
 export default function Wishes() {
     const [showConfetti, setShowConfetti] = useState(false);
@@ -40,7 +40,7 @@ export default function Wishes() {
         fetch(API_URL)
             .then(res => res.json())
             .then(data => setWishes(data.reverse()))
-            .catch(console.error);
+            .catch(console.log);
     }, []);
 
     const handleSubmitWish = async (e) => {
