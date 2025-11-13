@@ -40,7 +40,7 @@ export default function Wishes() {
         fetch(API_URL)
             .then(res => res.json())
             .then(data => setWishes(data.reverse()))
-            .catch(console.log);
+            .catch(console.error);
     }, []);
 
     const handleSubmitWish = async (e) => {
